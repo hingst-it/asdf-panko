@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+git ls-remote --tags --refs https://github.com/hingst-it/panko.git |
+  sed -nE 's|.*refs/tags/v([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?)$|\1|p' |
+  sort -t . -k 1,1n -k 2,2n -k 3,3n | tr '\n' ' '
+printf '\n'
